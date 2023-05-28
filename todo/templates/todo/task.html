@@ -1,0 +1,28 @@
+{% extends 'todo/main.html' %}
+
+{% block content %}
+<div class="header-bar">
+    <a href="{% url 'task' %}">&#8592; Back</a>
+</div>
+
+<div class="card-body">
+    {% if task.complete %}
+        <div class="task-title">
+            <div class="task-complete-icon"></div>
+            <i><s><a>{{ task }}</a></s></i>
+        </div>
+        {% if task.description %}
+            <div class="task-title">{{ task.description }}</div>
+        {% endif %}
+        {% else %}
+        <div class="task-title">
+            <div class="task-incomplete-icon"></div>
+            <a>{{ task }}</a>
+        </div>
+        {% if task.description %}
+            <div class="task-title">{{ task.description }}</div>
+        {% endif %}
+    {% endif %}
+</div>
+
+{% endblock content %}
